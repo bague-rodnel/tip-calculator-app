@@ -28,45 +28,56 @@ function updateDom() {
   domBill.value = bill;
   domPax.value = pax;
 
+  updateTotals();
+}
+
+function updateTotals() {
+  const { bill, rate, pax } = _state;
+
   if (0 === pax) {
     domPaxError.style.visibility = "visible";
     domPax.classList.add("with-error");
+    domPax.select();
 
     domTipPerPax.innerText = "--";
     domTotalPerPax.innerText = "--";
 
     domReset.disabled = true;
     domReset.classList.add("disabled");
-  } else {
-    updateTotals();
-  }
-}
 
-function updateTotals() {
-  const { bill, rate, pax } = _state;
+    return;
+  }
+
+  domPaxError.style.visibility = "hidden";
+  domPax.classList.remove("with-error");
 
   const _tip = (bill * rate) / pax;
   const _total = (bill * (1.0 + rate)) / pax;
 
   domTipPerPax.innerHTML = `$${_tip.toFixed(2)}`;
+  domTipPerPax.dataset.tooltip = `$${_tip.toFixed(2)}`;
+
   domTotalPerPax.innerHTML = `$${_total.toFixed(2)}`;
+  domTotalPerPax.dataset.tooltip = `$${_total.toFixed(2)}`;
+
+  domReset.disabled = false;
+  domReset.classList.remove("disabled");
 }
 
 initApp();
 
 domForm.addEventListener("reset", function () {
-  domReset.classList.add("disabled");
-
   _state.bill = 0;
   _state.rate = 0;
   _state.pax = 1;
 
   updateTotals();
+  domReset.disabled = true;
+  domReset.classList.add("disabled");
 });
 
 domForm.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
-    console.log("captured return key");
     e.target.blur();
   }
 });
@@ -86,10 +97,11 @@ domForm.addEventListener("click", function (e) {
 });
 
 domForm.addEventListener("focusout", function (e) {
-  console.log(e.target.id);
   switch (e.target.id) {
     case "bill": {
       _state.bill = e.target.value;
+      updateTotals();
+
       break;
     }
 
@@ -102,22 +114,24 @@ domForm.addEventListener("focusout", function (e) {
 
         _state.rate = e.target.value / 100;
       }
+      updateTotals();
+
       break;
     }
 
     case "pax": {
-      _state.pax = e.target.value / 1.0;
+      if (e.target.value) {
+        _state.pax = e.target.value / 1.0;
+      } else {
+        _state.pax = 1;
+      }
+      updateTotals();
+
       break;
     }
 
     default:
-    // nothing
+      domReset.disabled = true;
+      domReset.classList.add("disabled");
   }
-
-  updateTotals();
 });
-
-// leave focus
-// read input
-// update state
-// update dom
