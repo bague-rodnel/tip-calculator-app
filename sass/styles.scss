@@ -81,6 +81,10 @@ h1 {
 
       &#tip_custom {
         padding-left: 0;
+
+        &.in-use {
+          outline: 2px solid $c_cyan_strong;
+        }
       }
 
       &#pax.with-error,
@@ -177,6 +181,11 @@ h1 {
         color: $c_cyan_very_dark;
         text-transform: uppercase;
         font-weight: $f_wt_bold;
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
 
         &:hover {
           background-color: $c_cyan_gray_light1;

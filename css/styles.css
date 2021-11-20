@@ -105,6 +105,9 @@ h1 {
 .app form input[type=number]#tip_custom {
   padding-left: 0;
 }
+.app form input[type=number]#tip_custom.in-use {
+  outline: 2px solid #26c0ab;
+}
 .app form input[type=number]#pax.with-error, .app form input[type=number]#pax.with-error:focus, .app form input[type=number]#pax.with-error:focus-visible {
   outline: #e69900 solid 2px;
 }
@@ -181,6 +184,9 @@ h1 {
   color: #00494d;
   text-transform: uppercase;
   font-weight: 700;
+}
+.app form .totals-area .btn-reset:focus, .app form .totals-area .btn-reset:focus-visible {
+  outline: none;
 }
 .app form .totals-area .btn-reset:hover {
   background-color: #c5e4e7;
