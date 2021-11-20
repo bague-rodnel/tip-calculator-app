@@ -11,27 +11,19 @@ const domTipButtons = document.querySelectorAll(
 );
 
 const _state = {
-  bill: 142.55,
-  rate: 0.15,
-  pax: 5,
+  bill: 0,
+  rate: 0.0,
+  pax: 1,
 };
 
 function initApp() {
-  document.querySelector("#tip_15").checked = true;
-  updateDom();
-}
-
-function updateDom() {
-  const { bill, rate, pax } = _state;
-
-  // ermove later?
   domBill.value = bill;
   domPax.value = pax;
 
-  updateTotals();
+  updateTotals(true);
 }
 
-function updateTotals() {
+function updateTotals(isReset = false) {
   const { bill, rate, pax } = _state;
 
   if (0 === pax) {
@@ -60,8 +52,13 @@ function updateTotals() {
   domTotalPerPax.innerHTML = `$${_total.toFixed(2)}`;
   domTotalPerPax.dataset.tooltip = `$${_total.toFixed(2)}`;
 
-  domReset.disabled = false;
-  domReset.classList.remove("disabled");
+  if (isReset) {
+    domReset.disabled = true;
+    domReset.classList.add("disabled");
+  } else {
+    domReset.disabled = false;
+    domReset.classList.remove("disabled");
+  }
 }
 
 initApp();
@@ -71,9 +68,7 @@ domForm.addEventListener("reset", function () {
   _state.rate = 0;
   _state.pax = 1;
 
-  updateTotals();
-  domReset.disabled = true;
-  domReset.classList.add("disabled");
+  updateTotals(true);
 });
 
 domForm.addEventListener("keydown", function (e) {

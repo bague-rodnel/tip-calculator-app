@@ -10,7 +10,7 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
+  - [Continued Development](#continued-development)
 
 ## Overview
 
@@ -36,7 +36,12 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- Sass
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- Javasrcript
+
+### Continued Development
+
+I'm going to make a react version of this soon.
