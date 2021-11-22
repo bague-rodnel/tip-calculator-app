@@ -29,6 +29,7 @@ h1 {
 .app form .fixed-tip,
 .app form .btn-reset {
   cursor: pointer;
+  font-weight: var(--f_wt_bold);
 }
 
 .app form input,
@@ -53,6 +54,10 @@ h1 {
 .app form input[type="number"]:focus,
 .app form input[type="number"]:focus-visible {
   outline: var(--c_cyan_strong) solid 2px;
+}
+
+.app form input[type="number"]#tip_custom {
+  font-size: 20px;
 }
 
 .app form input[type="number"]#tip_custom.in-use {

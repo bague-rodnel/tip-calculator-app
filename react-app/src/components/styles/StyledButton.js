@@ -6,4 +6,6 @@ export const StyledButton = styled.button`
   height: 48px;
   border-radius: 0.33rem;
   border: none;
+  font-family: inherit;
+  font-weight: var(--f_wt_bold);
 `;
