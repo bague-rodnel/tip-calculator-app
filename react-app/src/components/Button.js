@@ -5,9 +5,9 @@ const Button = ({ className, text, isLit, onClick, isDisabled }) => {
     classes += " lit";
   }
   return (
-    <button className={classes} onClick={onClick} disabled={isDisabled}>
+    <StyledButton className={classes} onClick={onClick} disabled={isDisabled}>
       {text}
-    </button>
+    </StyledButton>
   );
 };
 
