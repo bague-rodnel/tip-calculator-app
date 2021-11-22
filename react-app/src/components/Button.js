@@ -1,3 +1,5 @@
+import { StyledButton } from "./styles/StyledButton";
+
 const Button = ({ className, text, isLit, onClick, isDisabled }) => {
   let classes = className;
 
