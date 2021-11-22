@@ -1,0 +1,65 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+:root {
+  --c_cyan_strong: hsl(172, 67%, 45%);
+  --c_cyan_very_dark: hsl(183, 100%, 15%);
+  --c_cyan_gray_dark1: hsl(186, 14%, 43%);
+  --c_cyan_gray_dark2: hsl(184, 14%, 56%);
+  --c_cyan_gray_light1: hsl(185, 41%, 84%);
+  --c_cyan_gray_light2: hsl(189, 41%, 97%);
+  --c_cyan_disabled-bg: hsl(183, 79%, 24%);
+  --c_cyan_disabled-text: hsl(184, 89%, 21%);
+  --c_orange: hsl(40, 100%, 45%);
+  --c_white: hsl(0, 0%, 100%);
+
+  --f_wt_reg: 400;
+  --f_wt_bold: 700;
+  --f_family: "Space Mono", monospace;
+}
+
+::-moz-placeholder {
+  color: var(--c_cyan_gray_dark2);
+}
+
+:-ms-input-placeholder {
+  color: var(--c_cyan_gray_dark2);
+}
+
+::placeholder {
+  color: var(--c_cyan_gray_dark2);
+}
+
+body {
+  background-color: var(--c_cyan_gray_light1);
+  font-family: var(--f_family);
+  color: var(--c_cyan_gray_dark1);
+}
