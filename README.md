@@ -29,7 +29,8 @@ Users should be able to:
 
 ### Links
 
-[View Live Here](https://bague-rodnel.github.io/tip-calculator-app/)
+[Plain JavaScript](https://bague-rodnel.github.io/tip-calculator-app/)\
+[React Version](https://fm-tip-calculator-app.netlify.app/)
 
 ## My process
 
