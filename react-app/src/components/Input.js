@@ -1,5 +1,3 @@
-import { StyledInput } from "./styles/StyledInput";
-
 const Input = ({
   placeholder,
   icon: Icon,
@@ -13,7 +11,7 @@ const Input = ({
   classes += isInvalid ? "with-error" : "";
 
   return (
-    <StyledInput>
+    <div>
       {Icon && <Icon className="icon" />}
       <input
         type="number"
@@ -23,7 +21,7 @@ const Input = ({
         value={value}
         onChange={onChange}
       />
-    </StyledInput>
+    </div>
   );
 };
 export default Input;

@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { BsCurrencyDollar, BsFillPersonFill } from "react-icons/bs";
-import "./App.css";
 import Button from "./components/Button";
 import Input from "./components/Input";
+import "./sass/styles.scss";
 
 const App = () => {
   const [bill, setBill] = useState(0);
@@ -10,7 +10,6 @@ const App = () => {
   const [customRate, setCustomRate] = useState("");
   const [pax, setPax] = useState(1);
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const errorMsgRef = useRef(null);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +42,6 @@ const App = () => {
 
     if (e.target.getAttribute("id") === "tip_custom") {
       const absVal = Math.abs(e.target.value);
-      console.log(absVal);
       setRate(absVal / 100);
       setCustomRate(absVal);
     }

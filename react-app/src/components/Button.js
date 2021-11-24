@@ -1,5 +1,3 @@
-import { StyledButton } from "./styles/StyledButton";
-
 const Button = ({ className, text, isLit, onClick, isDisabled }) => {
   let classes = className;
 
@@ -7,9 +5,9 @@ const Button = ({ className, text, isLit, onClick, isDisabled }) => {
     classes += " lit";
   }
   return (
-    <StyledButton className={classes} onClick={onClick} disabled={isDisabled}>
+    <button className={classes} onClick={onClick} disabled={isDisabled}>
       {text}
-    </StyledButton>
+    </button>
   );
 };
 

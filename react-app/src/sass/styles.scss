@@ -1,0 +1,322 @@
+// @use "resets";
+// @use "variables" as *;
+@import "resets";
+@import "variables";
+
+body {
+  background-color: $c_cyan_gray_light1;
+  font-family: $f_family;
+  color: $c_cyan_gray_dark1;
+}
+
+h1 {
+  margin: 35px 0;
+  text-align: center;
+  letter-spacing: 0.25em;
+  font-size: 25px;
+  color: $c_cyan_very_dark;
+}
+
+.app {
+  form {
+    margin: 0 auto;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    box-shadow: 0 1rem 2rem -0.75rem rgba($c_cyan_very_dark, 0.2);
+    background: $c_white;
+    padding: 32px;
+
+    .area {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: $f_wt_bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input,
+    .fixed-tip,
+    .btn-reset {
+      width: 100%;
+      height: 46px;
+      border-radius: 0.33rem;
+      border: none;
+      font-family: inherit;
+    }
+
+    .fixed-tip,
+    .btn-reset {
+      font-weight: $f_wt_bold;
+      font-size: inherit;
+      height: 48px;
+      cursor: pointer;
+    }
+
+    input[type="number"] {
+      border: 1px solid darken($c_cyan_gray_light2, 2%);
+      background-color: $c_cyan_gray_light2;
+      padding-left: 3rem;
+      padding-right: 1rem;
+      text-align: right;
+      color: $c_cyan_very_dark;
+      font-weight: $f_wt_bold;
+      font-size: 24px;
+
+      &::placeholder {
+        color: $c_cyan_gray_dark2;
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: $c_cyan_strong solid 2px;
+      }
+
+      &#tip_custom {
+        padding-left: 1rem;
+        font-size: 20px;
+
+        &.in-use {
+          outline: 2px solid $c_cyan_strong;
+        }
+      }
+
+      &#pax.with-error,
+      &#pax.with-error:focus,
+      &#pax.with-error:focus-visible {
+        outline: $c_orange solid 2px;
+      }
+    }
+
+    .fixed-tip {
+      background-color: $c_cyan_very_dark;
+      color: $c_white;
+      font-size: 24px;
+      transition: background-color 0.1s ease-in;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: $c_cyan_gray_light1;
+        color: $c_cyan_very_dark;
+      }
+    }
+
+    .fixed-tip.lit {
+      background-color: $c_cyan_strong;
+      color: $c_cyan_very_dark;
+    }
+
+    .styled-input {
+      position: relative;
+
+      .icon {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        height: 100%;
+        color: $c_cyan_gray_dark2;
+
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .input-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #pax-error {
+      visibility: hidden;
+      color: $c_orange;
+      font-weight: $f_wt_bold;
+    }
+
+    .totals-area {
+      position: relative;
+
+      margin-bottom: 0;
+      border-radius: 1rem;
+      background-color: $c_cyan_very_dark;
+      padding: 42px 24px 24px;
+
+      dl {
+        margin-bottom: 30px;
+
+        display: grid;
+        align-items: center;
+        grid-template-columns: 100px 1fr;
+        grid-row-gap: 25px;
+
+        dt {
+          font-size: 15px;
+          color: $c_white;
+          font-weight: $f_wt_bold;
+
+          em {
+            display: block;
+            color: $c_cyan_gray_dark2;
+            font-style: normal;
+          }
+        }
+
+        dd {
+          text-align: right;
+          font-size: 30px;
+          font-weight: $f_wt_bold;
+          color: $c_cyan_strong;
+          cursor: pointer;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &:active::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            background-color: $c_cyan_very_dark;
+            color: $c_white;
+            font-size: 1rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      .btn-reset {
+        background-color: $c_cyan_strong;
+        color: $c_cyan_very_dark;
+        text-transform: uppercase;
+        font-weight: $f_wt_bold;
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+
+        &:hover {
+          background-color: $c_cyan_gray_light1;
+        }
+
+        &.disabled {
+          background-color: $c_cyan_disabled-bg;
+          color: $c_cyan_disabled-text;
+        }
+      }
+    }
+  }
+}
+
+.attribution {
+  margin-top: 0.5rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: $c_cyan_very_dark;
+}
+
+@media (min-width: 400px) {
+  .app {
+    form {
+      width: 400px;
+      border-radius: 1.5rem;
+
+      .input-areas {
+        .tip-area {
+          .tips-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .app {
+    form {
+      width: 600px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    min-height: 800px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1 {
+    margin: 0 0 56px;
+  }
+  .app {
+    form {
+      width: 920px;
+
+      display: flex;
+      gap: 30px;
+
+      .input-areas {
+        flex-basis: 50%;
+        padding: 16px 18px 0;
+
+        .area {
+          margin-bottom: 40px;
+
+          &:last-child {
+            margin-bottom: 16px;
+          }
+        }
+      }
+
+      .totals-area {
+        flex-basis: 50%;
+        padding: 50px 40px 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        dl {
+          margin-bottom: 0;
+          grid-row-gap: 20px;
+          dd {
+            font-size: 44px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    min-height: 1024px;
+  }
+
+  h1 {
+    margin-bottom: 80px;
+  }
+}
